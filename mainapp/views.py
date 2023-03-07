@@ -54,7 +54,6 @@ def signup(request):
     return render(request, 'signup.html', data)
 
 
-
 def login(request):
 
     if request.method == "GET":
@@ -89,9 +88,11 @@ def login(request):
 
 
 def logout_user(request, id):
-    user = Login.objects.get(
-        username=request.session.get('user_{}_uname'.format(id)))
-    if 'user_{}_uname'.format(user.id) in request.session and 'user_{}_upass'.format(user.id) in request.session:
+    if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
+        return HttpResponseRedirect('/login/')
+    elif 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
+        user = Login.objects.get(
+            username=request.session.get('user_{}_uname'.format(id)))
         del request.session['user_{}_uname'.format(user.id)]
         del request.session['user_{}_upass'.format(user.id)]
         request.session.flush()

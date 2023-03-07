@@ -40,7 +40,8 @@ def blog(request):
     return render(request, 'blogs.html', datamain)
 
 
-def blogid(request ,id):
+def blogid(request, id):
     data = Review.objects.all()
-    datamain = {'data': data,'id':id}
+    url = "/dashboard/{}".format(id)
+    datamain = {'data': data, 'id': id, 'url': url}
     return render(request, 'blogs2.html', datamain)
