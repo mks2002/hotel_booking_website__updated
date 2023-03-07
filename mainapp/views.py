@@ -94,7 +94,7 @@ def logout_user(request, id):
     if 'user_{}_uname'.format(user.id) in request.session and 'user_{}_upass'.format(user.id) in request.session:
         del request.session['user_{}_uname'.format(user.id)]
         del request.session['user_{}_upass'.format(user.id)]
-        # request.session.flush()
+        request.session.flush()
         request.session.clear_expired()
     return HttpResponseRedirect('/login/')
 

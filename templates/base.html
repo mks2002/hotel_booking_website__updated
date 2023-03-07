@@ -34,6 +34,8 @@
     <header class="header_wrapper">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
+
+          {% block navlogo %}
           <a class="navbar-brand" href="{% url 'home' %}">
             <img
               src="{% static './images/logo.png' %}"
@@ -41,6 +43,9 @@
               alt="logo"
             />
           </a>
+          
+          {% endblock navlogo %}
+        
 
           <button
             class="navbar-toggler"
@@ -59,67 +64,91 @@
             id="navbarNav"
           >
             <ul class="navbar-nav menu-navbar-nav">
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/' %}active {% endif %}"
-                  aria-current="page"
-                  href="{% url 'home'%}"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/about/' %}active {% endif %}"
-                  href="{% url 'about'%}"
-                  >About</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/services/' %}active {% endif %}"
-                  href="{% url 'service'%}"
-                  >Services</a
-                >
-              </li>
 
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/staffs/' %}active {% endif %}"
-                  href="{% url 'staffs'%}"
-                  >Staffs</a
-                >
-              </li>
 
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/blogs/' %}active {% endif %}"
-                  href="{% url 'blog'%}"
-                  >Blogs</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/travel_details/' %}active {% endif %}"
-                  href="{% url 'travel'%}"
-                  >Traindetails</a
-                >
-              </li>
 
-              {% block navlink1 %} 
-              <li class="nav-item">
-                <a
-                  class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
-                  href="{% url 'signup'%}"
-                  >Login/signup</a
-                >
-              </li>
-              {% endblock navlink1 %}
-             
-               {% block navlink2 %}
-              <li class="nav-item mt-3 mt-lg-0">
-                <a class="main-btn" href="{% url 'login'%}">Book now</a>
-              </li>
-              {% endblock navlink2 %}
+
+
+{% block navbar %}
+
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/' %}active {% endif %}"
+    aria-current="page"
+    href="{% url 'home'%}"
+    >Home</a
+  >
+</li>
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/about/' %}active {% endif %}"
+    href="{% url 'about'%}"
+    >About</a
+  >
+</li>
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/services/' %}active {% endif %}"
+    href="{% url 'service'%}"
+    >Services</a
+  >
+</li>
+
+
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/staffs/' %}active {% endif %}"
+    href="{% url 'staffs'%}"
+    >Staffs</a
+  >
+</li>
+
+
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/blogs/' %}active {% endif %}"
+   href="{% url 'blog'%}"
+   >Blogs</a
+ >
+</li>
+  
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/travel_details/' %}active {% endif %}"
+    href="{% url 'travel'%}"
+    >Traindetails</a
+  >
+</li>
+
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
+    href="{% url 'signup'%}"
+    >Login/signup</a
+  >
+</li>
+
+
+<li class="nav-item mt-3 mt-lg-0">
+  <a class="main-btn" href="{% url 'login'%}">Book now</a>
+</li>
+
+{% endblock navbar %}
+
+
+
             </ul>
           </div>
         </div>
@@ -251,7 +280,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+    {% block javascript_files %}
+    
     <script src="{% static 'js/main.js' %}"></script>
+    
+    {% endblock javascript_files %}
+
+
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>

@@ -23,27 +23,30 @@
   }
 </style>
 
-{% endblock style %} {% block content1 %}
+{% endblock style %}
+
+
+{% block content1 %}
 
 <section id="blog" class="blog_wrapper pb-0">
   <div class="container-fluid">
 
-    <div class="row mb-5">
-        <div class="col-sm-12 section-title text-center mb-2">
-        
-          <h3 class="text-black">Our Blog</h3>
+      <div class="row mb-5">
+          <div class="col-sm-12 section-title text-center mb-2">
+          
+            <h3 class="text-black">Our Blog</h3>
+          </div>
+        <div class="text-center w-75 m-auto">
+          Although the entire hospitality industry has been undoubtedly rocked by the pandemic, there’s no denying that the majority of hotel research and reservations are still being made online. Indeed, according to Condor Ferries, 700 million people are expected to book their hotel rooms online by 2023, with 83% of US consumers already making their travel plans digitally.
         </div>
-      <div class="text-center w-75 m-auto">
-        Although the entire hospitality industry has been undoubtedly rocked by the pandemic, there’s no denying that the majority of hotel research and reservations are still being made online. Indeed, according to Condor Ferries, 700 million people are expected to book their hotel rooms online by 2023, with 83% of US consumers already making their travel plans digitally.
+      </div>
+     <hr class="container">
+    <div class="row mt-3">
+      <div class="col-sm-12 section-title text-center mb-2">
+            
+        <h3 class="text-black"> Blogs Posted by admin..</h3>
       </div>
     </div>
-<hr class="container">
-<div class="row mt-3">
-  <div class="col-sm-12 section-title text-center mb-2">
-        
-    <h3 class="text-black"> Blogs Posted by admin..</h3>
-  </div>
-</div>
   
       <div class="row p-3 py-2">
 
@@ -213,12 +216,15 @@
                 <tbody>
                   {% for d in data %}
                   <tr class="my-5 ">
+
                     <th scope="row">{{forloop.counter}}</th>
                     <td>{{d.user_review}}</td>
                 
                     <td>{{d.ratings}}*<i class="fas fa-star"></i></td>
                     <td>{{d.username}}</td>
+                   
                   </tr>
+                
                   {% empty %}
                   <h4 class="text-center my-4">Users doesnt posted any Reviews now..</h4>
                   <hr class="container">
@@ -235,36 +241,16 @@
 
   </div>
 
-<hr class="mt-5">
+ <hr class="mt-5">
 
-  <div class="our-partner-slider mt-0">
-    <div class="container swiper our-partner">
 
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="images/partners/brand1.webp" alt="" />
-    </div>
-    <div class="swiper-slide">
-      <img src="images/partners/brand2.webp" alt="" />
-    </div>
-    <div class="swiper-slide">
-      <img src="images/partners/brand3.webp" alt="" />
-    </div>
-    <div class="swiper-slide">
-      <img src="images/partners/brand4.webp" alt="" />
-    </div>
-    <div class="swiper-slide">
-      <img src="images/partners/brand5.webp" alt="" />
-    </div>
-    <div class="swiper-slide">
-      <img src="images/partners/brand6.webp" alt="" />
-    </div>
-  </div>
-
-      
-
-    </div>
-  </div>
 </section>
 
 {% endblock content1 %}
+
+
+{% block javascript_files %}
+    
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock javascript_files %}

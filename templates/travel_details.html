@@ -19,7 +19,10 @@
   }
 </style>
 
-{% endblock style %} {% block content1 %}
+{% endblock style %} 
+
+
+{% block content1 %}
 
 <div class="travel mb-0" style="">
   <div class="container-my p-3 py-5">
@@ -118,7 +121,19 @@
   </div>
 </section>
 
-{% endblock content2 %} {% block content4 %}
+{% endblock content2 %}
+
+
+
+{% block javascript_files %}
+    
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock javascript_files %}
+
+
+
+{% block content4 %}
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
   var typed = new Typed(".auto-type", {

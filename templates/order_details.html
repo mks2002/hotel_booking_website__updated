@@ -16,19 +16,88 @@
   }
 </style>
 
-{% endblock style %} {% block navlink1 %}
+{% endblock style %} 
+
+
+{% block navbar %}
+ 
+
 <li class="nav-item">
-  <a
-    class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
-    href="{% url 'logout' id %}"
-    >Logout</a
-  >
+ <a
+   class="nav-link {% if request.path == '/' %}active {% endif %}"
+   aria-current="page"
+   href="{% url 'homeid' id %}"
+   >Home</a
+ >
 </li>
-{% endblock navlink1 %} {% block navlink2 %}
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/about/' %}active {% endif %}"
+   href="{% url 'aboutid' id%}"
+   >About</a
+ >
+</li>
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/services/' %}active {% endif %}"
+   href="{% url 'serviceid' id %}"
+   >Services</a
+ >
+</li>
+
+
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/staffs/' %}active {% endif %}"
+   href="{% url 'staffsid' id%}"
+   >Staffs</a
+ >
+</li>
+
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/blogs/' %}active {% endif %}"
+  href="{% url 'blogid' id%}"
+  >Blogs</a
+>
+</li>
+
+
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/travel_details/' %}active {% endif %}"
+   href="{% url 'travelid' id%}"
+   >Traindetails</a
+ >
+</li>
+
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
+   href="{% url 'logout' id %}"
+   >Logout</a
+ >
+</li>
+
 <li class="nav-item mt-3 mt-lg-0">
-  <a href="{{url}}" class="main-btn">Dashboard</a>
+
+ <a href="{{url}}" class="main-btn">Dashboard</a>
 </li>
-{% endblock navlink2 %} {% block content1 %}
+
+
+
+{% endblock navbar %}
+
+
+
+
+{% block content1 %}
 <div class="dashboard">
   <div class="mt-5 mb-3 w-100 text-center section-title">
     <h3 class="myuser">
@@ -81,3 +150,10 @@
   <a href="{{url}}" class="main-btn mt-4">Dashboard</a>
 </div>
 {% endblock content1 %}
+
+
+{% block javascript_files %}
+    
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock javascript_files %}

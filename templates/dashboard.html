@@ -5,22 +5,84 @@
  
  {% endblock style %} 
 
- {% block navlink1 %}
+
+
+
+ {% block navbar %}
+ 
+
  <li class="nav-item">
-   <a
-     class="nav-link"
-     href="{% url 'logout' id %}"
-     >Logout</a
-   >
- </li>
- {% endblock navlink1 %}
+  <a
+    class="nav-link {% if request.path == '/' %}active {% endif %}"
+    aria-current="page"
+    href="{% url 'homeid' id %}"
+    >Home</a
+  >
+</li>
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/about/' %}active {% endif %}"
+    href="{% url 'aboutid' id%}"
+    >About</a
+  >
+</li>
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/services/' %}active {% endif %}"
+    href="{% url 'serviceid' id %}"
+    >Services</a
+  >
+</li>
+
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/staffs/' %}active {% endif %}"
+    href="{% url 'staffsid' id%}"
+    >Staffs</a
+  >
+</li>
+
+
+<li class="nav-item">
+ <a
+   class="nav-link {% if request.path == '/blogs/' %}active {% endif %}"
+   href="{% url 'blogid' id%}"
+   >Blogs</a
+ >
+</li>
+
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/travel_details/' %}active {% endif %}"
+    href="{% url 'travelid' id%}"
+    >Traindetails</a
+  >
+</li>
+
+
+<li class="nav-item">
+  <a
+    class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
+    href="{% url 'logout' id %}"
+    >Logout</a
+  >
+</li>
+
+<li class="nav-item mt-3 mt-lg-0">
+
+  <a href="{{url}}" class="main-btn">Dashboard</a>
+</li>
  
- {% block navlink2 %}
- <li class="nav-item mt-3 mt-lg-0">
  
-   <a href="{{url}}" class="main-btn">Dashboard</a>
- </li>
- {% endblock navlink2 %}
+ 
+ {% endblock navbar %}
+
 
 {% block content1 %}
 
@@ -59,7 +121,7 @@
                 <td>{{p.contact_no}}</td>
                 <td><a href="/details/?id1={{p.id}}&session__id={{id}}" class="main-btn">Details</a></td>
 
-                <td> <a class="main-btn " href="delete/?id1={{p.id}}session__id={{id}}">Delete</a></td>
+                <td> <a class="main-btn " href="delete/?id1={{p.id}}&session__id={{id}}">Delete</a></td>
 
               
               </tr>
@@ -68,7 +130,7 @@
               <hr class="container">
               {% endfor %}
             </tbody>
-            {% comment %} <td> <a class="main-btn " href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">Delete</a></td> {% endcomment %}
+         
           </table>
         </div>
       </div>
@@ -91,3 +153,9 @@
 
 
 {% endblock content1 %}
+
+{% block javascript_files %}
+    
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock javascript_files %}

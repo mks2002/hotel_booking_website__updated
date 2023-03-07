@@ -39,8 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function counter(id, start, end, duration) {
       let obj = document.getElementById(id),
-         current = start,
-         range = end - start,
+
+      current = start;,
+      range = end - start,
          increment = end > start ? 1 : -1,
          step = Math.abs(Math.floor(duration / range)),
          timer = setInterval(() => {
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
    counter("count3", 0, 1440, 3000);
    counter("count4", 0, 7110, 3000);
 });
+
 
 
 

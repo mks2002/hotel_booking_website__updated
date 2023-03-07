@@ -1,0 +1,87 @@
+{% extends 'services.html' %}
+{% load static %}
+
+
+
+{% block navlogo %}
+<a class="navbar-brand" href="{% url 'homeid' id %}">
+  <img
+    src="{% static './images/logo.png' %}"
+    class="img-fluid"
+    alt="logo"
+  />
+</a>
+
+{% endblock navlogo %}
+
+{% block navbar %}
+    
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/' %}active {% endif %}"
+  aria-current="page"
+  href="{% url 'homeid' id %}"
+  >Home</a
+>
+</li>
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/about/' %}active {% endif %}"
+  href="{% url 'aboutid' id%}"
+  >About</a
+>
+</li>
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/services/' %}active {% endif %}"
+  href="{% url 'serviceid' id %}"
+  >Services</a
+>
+</li>
+
+
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/staffs/' %}active {% endif %}"
+  href="{% url 'staffsid' id%}"
+  >Staffs</a
+>
+</li>
+
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/blogs/' %}active {% endif %}"
+  href="{% url 'blogid' id%}"
+  >Blogs</a
+>
+</li>
+
+
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/travel_details/' %}active {% endif %}"
+  href="{% url 'travelid' id%}"
+  >Traindetails</a
+>
+</li>
+
+
+<li class="nav-item">
+<a
+  class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
+  href="{% url 'logout' id %}"
+  >Logout</a
+>
+</li>
+
+<li class="nav-item mt-3 mt-lg-0">
+
+<a href="{{url}}" class="main-btn">Dashboard</a>
+</li>
+
+{% endblock navbar %}

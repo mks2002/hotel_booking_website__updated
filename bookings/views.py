@@ -137,9 +137,7 @@ def details(request):
 
 def delete(request):
     id = request.GET.get('session__id')
-    if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
-    elif 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
+    if 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
         id1 = request.GET.get('id1')
         id = request.GET.get('session__id')
         Bookinghotel.objects.filter(id=id1).delete()

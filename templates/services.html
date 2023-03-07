@@ -1,7 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% block style %}
 <style></style>
 
-{% endblock style %} {% block content1 %}
+{% endblock style %} 
+
+
+
+{% block content1 %}
 
 <section id="rooms" class="rooms_wrapper">
   <div class="container-fluid">
@@ -402,3 +406,10 @@
 </section>
 
 {% endblock content1 %}
+
+
+{% block javascript_files %}
+    
+<script src="{% static 'js/main2.js' %}"></script>
+
+{% endblock javascript_files %}

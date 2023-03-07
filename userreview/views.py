@@ -13,7 +13,7 @@ def review(request, id):
         n = ''
         cname = ''
         bool = False
-        url = '/dashboard/?name={}&pw={}'.format(username, password)
+        url = "/dashboard/{}".format(id)
         data = {'un': username, 'n': n,
                 'cname': cname, 'url': url, 'bool': bool, 'id': id}
 
@@ -38,3 +38,9 @@ def blog(request):
     data = Review.objects.all()
     datamain = {'data': data}
     return render(request, 'blogs.html', datamain)
+
+
+def blogid(request ,id):
+    data = Review.objects.all()
+    datamain = {'data': data,'id':id}
+    return render(request, 'blogs2.html', datamain)
