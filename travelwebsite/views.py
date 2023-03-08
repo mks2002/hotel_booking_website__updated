@@ -63,7 +63,7 @@ def travel(request):
 
 def homepageid(request, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/')
     else:
         url = "/dashboard/{}".format(id)
         data = {'id': id, 'url': url}
@@ -72,7 +72,7 @@ def homepageid(request, id):
 
 def aboutid(request, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/about/')
     else:
         url = "/dashboard/{}".format(id)
         data = {'id': id, 'url': url}
@@ -81,7 +81,7 @@ def aboutid(request, id):
 
 def servicesid(request, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/services/')
     else:
         url = "/dashboard/{}".format(id)
         data = {'id': id, 'url': url}
@@ -90,7 +90,7 @@ def servicesid(request, id):
 
 def staffsid(request, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/staffs/')
     else:
         url = "/dashboard/{}".format(id)
         data = {'id': id, 'url': url}
@@ -99,7 +99,7 @@ def staffsid(request, id):
 
 def travelid(request, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/travel_details/')
     else:
         url = "/dashboard/{}".format(id)
         data = {'id': id, 'url': url}

@@ -20,6 +20,7 @@ from mainapp.models import Login
 def hotellist(request, hotelstate, id):
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
         return HttpResponseRedirect('/login/')
+        
     elif 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
         user = Login.objects.get(
             username=request.session.get('user_{}_uname'.format(id)), password=request.session.get('user_{}_upass'.format(id)))
@@ -36,7 +37,8 @@ def hotellist(request, hotelstate, id):
                 data = Hotellist.objects.filter(
                     state=hotelstate).order_by('?')
             url = "/dashboard/{}".format(id)
+            dash_board_name=username[0:7]
             datamain = {"un": username, "pw": password,
-                        "url": url, "data": data, 'id': id}
+                        "url": url, "data": data, 'id': id,'dn':dash_board_name}
             return render(request, "hotellist.html", datamain)
         return render(request, "hotellist.html", datamain)

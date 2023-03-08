@@ -41,7 +41,10 @@ def blog(request):
 
 
 def blogid(request, id):
-    data = Review.objects.all()
-    url = "/dashboard/{}".format(id)
-    datamain = {'data': data, 'id': id, 'url': url}
-    return render(request, 'blogs2.html', datamain)
+    if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
+        return HttpResponseRedirect('/blogs/')
+    else:
+        data = Review.objects.all()
+        url = "/dashboard/{}".format(id)
+        datamain = {'data': data, 'id': id, 'url': url}
+        return render(request, 'blogs2.html', datamain)

@@ -55,7 +55,6 @@ def signup(request):
 
 
 def login(request):
-
     if request.method == "GET":
         n = "for booking you need to login first !"
         cname = "alert-warning"
@@ -97,7 +96,9 @@ def logout_user(request, id):
         del request.session['user_{}_upass'.format(user.id)]
         request.session.flush()
         request.session.clear_expired()
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/signup/')
+
+# this is for forgot password and this is before login ...
 
 
 def update(request):
@@ -141,3 +142,6 @@ def update(request):
             data = {'n': n, 'bool': bool, 'cname': cname}
         return render(request, 'update_password.html', data)
     return render(request, 'update_password.html', data)
+
+
+# we can also create one update password after the login .....
