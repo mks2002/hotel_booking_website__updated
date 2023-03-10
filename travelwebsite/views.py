@@ -15,9 +15,19 @@ import requests
 # Create your views here.
 
 # this 6 are static pages...
-def homepage(request):
-    return render(request, 'index.html')
+# def homepage(request, id=None):
+#     if id == None:
+#         return render(request, 'index.html')
+#     else:
+#         if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
+#             return HttpResponseRedirect('/')
+#         else:
+#             url = "/dashboard/{}".format(id)
+#             data = {'id': id, 'url': url}
+#             return render(request, 'index2.html', data)
 
+def homepage(request):
+    return render(request,'index.html')
 
 def about(request):
     return render(request, 'about.html')

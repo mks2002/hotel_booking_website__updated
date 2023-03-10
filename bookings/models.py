@@ -10,6 +10,7 @@ class Bookinghotel(models.Model):
     email = models.EmailField(max_length=50)
     contact_no = models.CharField(max_length=13)
     no_people = models.IntegerField()
+    
     username = models.CharField(max_length=30)
     userpassword = models.CharField(max_length=30)
     start = models.DateField(default=None)
@@ -18,3 +19,13 @@ class Bookinghotel(models.Model):
     city = models.CharField(max_length=60, default=None)
     state = models.CharField(max_length=60, default=None)
     current_cost = models.FloatField(default=0.0)
+    payment_status=models.CharField(max_length=50,default='Unpaid')
+    
+    
+    
+
+  
+
+   
+    
+  

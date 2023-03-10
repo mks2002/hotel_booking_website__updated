@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bookings',
     'hotellist',
     'userreview',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -142,21 +143,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "/media/"
 
-
-# this all settings are for to work the sessions properly....
-
-# SESSION_SAVE_EVERY_REQUEST = True
-# LOGGING = {
-#     'version': 1,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['console'],
-#             'level': 'INFO',
-#         },
-#     },
-# }

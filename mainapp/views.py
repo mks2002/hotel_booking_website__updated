@@ -12,6 +12,8 @@ from datetime import datetime as dt
 
 from mainapp.models import Login
 from bookings.models import Bookinghotel
+from payments.models import Paymentdetail
+
 
 # we dont use Hotellist here..
 # from hotellist.models import Hotellist
@@ -123,9 +125,10 @@ def update(request):
                 else:
                     Login.objects.filter(username=name).update(
                         password=new)
-                    # when we update the password we have to update it in the Bookinghotel table also othewise data is not properly displayed...
+                    # when we update the password we have to update it in the Bookinghotel and payment table also othewise data is not properly displayed...
                     Bookinghotel.objects.filter(
                         username=name).update(userpassword=new)
+                    Paymentdetail.objects.filter(username=name).update(password=new)
                     n = 'your password is updated successfully now you can login !'
                     cname = 'alert-success'
                     bool = True
@@ -136,7 +139,7 @@ def update(request):
                 bool = 60
                 data = {'n': n, 'bool': bool, 'cname': cname}
         else:
-            n = 'No such account is exist'
+            n = 'No such account is exist pls enter a valid username !'
             cname = 'alert-danger'
             bool = 50
             data = {'n': n, 'bool': bool, 'cname': cname}

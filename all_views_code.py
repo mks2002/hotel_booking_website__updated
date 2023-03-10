@@ -501,3 +501,176 @@
 #         url = "/dashboard/{}".format(id)
 #         datamain = {'data': data, 'id': id, 'url': url}
 #         return render(request, 'blogs2.html', datamain)
+
+
+
+
+
+
+
+
+
+# after this I changed this booking code so that it redirect to the dasbboard page ...
+
+# def bookings(request, id):
+#     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
+#         return HttpResponseRedirect('/login/')
+#     elif 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
+#         data = {}
+#         data1 = {}
+#         bool = False
+#         if request.method == "GET":
+#             un1 = request.session.get('user_{}_uname'.format(id))
+#             password1 = request.session.get('user_{}_upass'.format(id))
+#             hname1 = request.GET.get('hname')
+#             hcity1 = request.GET.get('hcity')
+#             hstate1 = request.GET.get('hstate')
+#             hcost1 = request.GET.get('hcost')
+#             url = "/dashboard/{}".format(id)
+#             data = {'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                     'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1, 'url': url, 'id': id}
+#             return render(request, 'booking.html', data)
+#         try:
+#             if request.method == "POST":
+#                 name = request.POST.get('name')
+#                 last = request.POST.get('last')
+#                 email = request.POST.get('email')
+#                 contact = request.POST.get('contact')
+#                 person = request.POST.get('person')
+#                 # this are hidden fields .....
+#                 username = request.POST.get('username')
+#                 password = request.POST.get('password')
+#                 start = request.POST.get('startdate')
+#                 end = request.POST.get('lastdate')
+#                 hotelname = request.POST.get('hotelname')
+#                 hotelcity = request.POST.get('hotelcity')
+#                 hotelstate = request.POST.get('hotelstate')
+#                 hotelcost = request.POST.get('hotelcost')
+
+#                 #  this are all the get method variable....
+#                 un1 = request.session.get('user_{}_uname'.format(id))
+#                 password1 = request.session.get('user_{}_upass'.format(id))
+#                 hname1 = request.GET.get('hname')
+#                 hcity1 = request.GET.get('hcity')
+#                 hstate1 = request.GET.get('hstate')
+#                 hcost1 = request.GET.get('hcost')
+
+#                 if end < start:
+#                     class_name = 'alert-warning'
+#                     bool = 50
+#                     n = 'your starting date must be less than ending date'
+#                     url = "/dashboard/{}".format(id)
+#                     data1 = {'cname': class_name,
+#                              'bool': bool,
+#                              'n': n, 'un': username, 'pw': password, 'url': url, 'id': id, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                              'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
+                    
+#                     return render(request, 'booking.html', data1)
+#                 else:
+#                     data = Bookinghotel(firstname=name, lastname=last,
+#                                         email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end, hotelname=hotelname, city=hotelcity, state=hotelstate, current_cost=hotelcost)
+#                     data.save()
+                   
+#                     class_name = 'alert-success'
+#                     bool = True
+#                     n = 'your bookings has been done !'
+#                     url = url = "/dashboard/{}".format(id)
+#                     data1 = {'cname': class_name,
+#                              'bool': bool,
+#                              'n': n, 'un': username, 'pw': password, 'url': url, 'id': id, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                              'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
+#                     # this is for rendering into the same page ....
+#                     # return render(request, 'booking.html', data1)
+                    
+#                     # this is for redirectin into the daahboard page ...
+#                     response=HttpResponseRedirect(url)
+#                     messages.success(request, 'your bookings has been done now now you can see the details below !')
+#                     return response
+                    
+#         except Exception as e:
+#             pass
+#         return render(request, 'booking.html', data1)
+
+
+
+
+
+
+
+
+
+
+
+# this code does not work but the current version is working may be it is because we dont convert string date to original date ...
+
+
+
+# def bookings(request, id):
+#     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:
+#         return HttpResponseRedirect('/login/')
+#     elif 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
+#         data = {}
+#         data1 = {}
+#         bool = False
+#         if request.method == "GET":
+#             un1 = request.session.get('user_{}_uname'.format(id))
+#             password1 = request.session.get('user_{}_upass'.format(id))
+#             hname1 = request.GET.get('hname')
+#             hcity1 = request.GET.get('hcity')
+#             hstate1 = request.GET.get('hstate')
+#             hcost1 = request.GET.get('hcost')
+#             url = "/dashboard/{}".format(id)
+#             data = {'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                     'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1, 'url': url, 'id': id}
+#             return render(request, 'booking.html', data)
+#         try:
+#             if request.method == "POST":
+#                 name = request.POST.get('name')
+#                 last = request.POST.get('last')
+#                 email = request.POST.get('email')
+#                 contact = request.POST.get('contact')
+#                 person = request.POST.get('person')
+#                 # this are hidden fields .....
+#                 username = request.POST.get('username')
+#                 password = request.POST.get('password')
+#                 start = request.POST.get('startdate')
+#                 end = request.POST.get('lastdate')
+#                 hotelname = request.POST.get('hotelname')
+#                 hotelcity = request.POST.get('hotelcity')
+#                 hotelstate = request.POST.get('hotelstate')
+#                 hotelcost = request.POST.get('hotelcost')
+
+#                 #  this are all the get method variable....
+#                 un1 = request.session.get('user_{}_uname'.format(id))
+#                 password1 = request.session.get('user_{}_upass'.format(id))
+#                 hname1 = request.GET.get('hname')
+#                 hcity1 = request.GET.get('hcity')
+#                 hstate1 = request.GET.get('hstate')
+#                 hcost1 = request.GET.get('hcost')
+
+#                 if end < start:
+#                     class_name = 'alert-warning'
+#                     bool = 50
+#                     n = 'your starting date must be less than ending date'
+#                     url = "/dashboard/{}".format(id)
+#                     data1 = {'cname': class_name,
+#                              'bool': bool,
+#                              'n': n, 'un': username, 'pw': password, 'url': url, 'id': id, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                              'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
+#                     return render(request, 'booking.html', data1)
+#                 else:
+#                     data = Bookinghotel(firstname=name, lastname=last,
+#                                         email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end, hotelname=hotelname, city=hotelcity, state=hotelstate, current_cost=hotelcost)
+#                     data.save()
+#                     class_name = 'alert-success'
+#                     bool = True
+#                     n = 'your bookings has been done now'
+#                     url = url = "/dashboard/{}".format(id)
+#                     data1 = {'cname': class_name,
+#                              'bool': bool,
+#                              'n': n, 'un': username, 'pw': password, 'url': url, 'id': id, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+#                              'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
+#                     return render(request, 'booking.html', data1)
+#         except Exception as e:
+#             pass
+#         return render(request, 'booking.html', data1)

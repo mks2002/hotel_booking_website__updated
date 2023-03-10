@@ -6,10 +6,6 @@
     box-sizing: border-box;
   }
 
-  body {
-    background-color: #f4f4f4;
-  }
-
   .btn1 {
     border: none;
     outline: none;
@@ -29,29 +25,33 @@
 
   .row111 {
     background: white;
-    opacity: 0.909;
     border-radius: 25px;
     box-shadow: 20px 22px 22px;
+    opacity: 0.81;
+    transition: 0.5s ease;
   }
 
   .row111:hover {
-    opacity: 0.969;
+    opacity: 0.98;
   }
 
   img {
     border-radius: 25px;
-  }
-
-  textarea {
-    resize: none;
+    height: 100%;
   }
 
   .hide {
     display: none;
   }
-</style>
-{% endblock style %}
 
+  .myimage {
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 15px;
+    margin-right: 40px;
+  }
+</style>
+
+{% endblock style %}
 
 {% block navlogo %}
 <a class="navbar-brand" href="{% url 'homeid' id %}">
@@ -106,79 +106,95 @@
   <a href="{{url}}" class="main-btn {% if request.path == '/dashboard/'|add:id %}active {% endif %}">Dashboard</a>
 </li>
 
-{% endblock navbar %}
+{% endblock navbar %} {% block content1 %}
 
-
-
-{% block content1 %}
-<div class="bgsign">
-
+<!-- Booking page -->
+<div class="booking">
   <section class="From my-4 mx-5">
     <div class="container">
       <div class="row no-gutters row111">
-
         <div class="col-lg-6 d-flex align-items-center">
-          <img src="{% static '/images/review2.avif' %}" class="img-fluid" alt="" />
+          <img src="{% static 'images/payment_page.jpg' %}" class="img-fluid" alt="" />
         </div>
 
         <div class="col-lg-6 px-5 pt-5">
-          <h4>We always respect your reviews</h4>
+          <h4>Pay Your Amounts online</h4>
 
           <div class="container">
+            {% if messages %}
+            {% for message in messages %}
 
-            {% if bool == True %}
-            <div class="alert {{cname}} alert-dismissible fade show" role="alert">
-              <strong>{{n}}</strong>
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+              <strong>{{ message }}</strong>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
-            {% else %}
-
+            {% endfor %}
             {% endif %}
 
 
-            <form method="POST">
+            <form method="post">
               {% csrf_token %}
+
               <div class="hide">
                 <div class="form-row">
-                  <div class="col-lg-12 d-flex">
+                  <div class="col-lg-6 d-flex">
                     <input type="text" placeholder="Username" name="username" value="{{un}}" required
                       class="form-control my-3 p-2" />
+                    <input type="text" placeholder="Password" name="password" value="{{pw}}" required
+                      class="form-control my-3 p-2" />
+                    <input type="number" placeholder="order_no" value="{{oid}}" name="order_no">
+
                   </div>
                 </div>
+
+
               </div>
+
               <div class="form-row">
                 <div class="col-lg-12">
-                  <textarea type="text" placeholder="write your review here" name="review" required
-                    class="form-control my-3 p-3" rows="4"></textarea>
+                  <label for="cost">Total amount</label>
+                  <input type="number" id="cost" placeholder="totla_cost" name="total_cost" value="{{cost}}"
+                    class="form-control my-3 p-2" readonly required>
 
                 </div>
+              </div>
+
+
+              <div class="form-row">
                 <div class="col-lg-12">
-                  <input type="number" placeholder="ratings" name="ratings" required class="form-control my-3 p-3" />
+                  <input type="email" name="email" placeholder="Email-Address" required class="form-control my-3 p-2" />
+                </div>
+                <div class="col-lg-12">
+                  <input type="text" placeholder="debit card no." name="card_no" required
+                    class="form-control my-3 p-2" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input type="text" name="cvv" placeholder="CVV number" required class="form-control my-3 p-2" />
+                </div>
+                <div class="col-lg-12">
+                  <label for="ed"> expiry date (MM / YY)</label>
+                  <input type="text" id="ed" placeholder=" MM / YY " name="exp_date" required
+                    class="form-control my-3 p-2" />
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-lg-7 m-auto">
-                  <button type="submit" class="btn1 mt-3 mb-5">submit now</button>
+                  <button type="submit" class="btn1 mt-3 mb-5">Pay Now</button>
                 </div>
               </div>
-              <p>
-                Back to dashboard <a href="{{url}}">click here</a>
-              </p>
             </form>
           </div>
         </div>
+
+
       </div>
     </div>
   </section>
 </div>
+
 {% endblock content1 %}
-
-
-{% block javascript_files %}
-
-<script src="{% static 'js/main2.js' %}"></script>
-
-{% endblock javascript_files %}
-

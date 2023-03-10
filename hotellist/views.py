@@ -39,6 +39,6 @@ def hotellist(request, hotelstate, id):
             url = "/dashboard/{}".format(id)
             dash_board_name=username[0:7]
             datamain = {"un": username, "pw": password,
-                        "url": url, "data": data, 'id': id,'dn':dash_board_name}
+                        "url": url, "data": data, 'id': id,'dn':dash_board_name, 'hstate':hotelstate}
             return render(request, "hotellist.html", datamain)
         return render(request, "hotellist.html", datamain)

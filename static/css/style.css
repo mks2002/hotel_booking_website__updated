@@ -80,7 +80,8 @@ section {
    transition: all 0.3s ease-out 0s;
 }
 
-.main-btn:hover {
+.main-btn:hover,
+.main-btn.active {
    background-color: var(--secondary-color);
    border-color: var(--secondary-color);
    color: var(--text-white);
@@ -888,6 +889,7 @@ body .travel table {
 .mydiv {
    width: 90vw;
    height: 75vh;
+   
    position: relative;
    margin: auto;
    margin-top: 5vh;
