@@ -11,6 +11,8 @@ from operator import not_
 # session__id
 # order_id
 
+
+# this is for payment form page ..
 def paymentpage(request):
     id = request.GET.get('session__id')
     if 'user_{}_uname'.format(id) not in request.session and 'user_{}_upass'.format(id) not in request.session:

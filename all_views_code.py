@@ -674,3 +674,6 @@
 #         except Exception as e:
 #             pass
 #         return render(request, 'booking.html', data1)
+
+
+from tomli import * 

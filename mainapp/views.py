@@ -98,7 +98,7 @@ def logout_user(request, id):
         del request.session['user_{}_upass'.format(user.id)]
         request.session.flush()
         request.session.clear_expired()
-    return HttpResponseRedirect('/signup/')
+    return HttpResponseRedirect('/login/')
 
 # this is for forgot password and this is before login ...
 
@@ -128,7 +128,8 @@ def update(request):
                     # when we update the password we have to update it in the Bookinghotel and payment table also othewise data is not properly displayed...
                     Bookinghotel.objects.filter(
                         username=name).update(userpassword=new)
-                    Paymentdetail.objects.filter(username=name).update(password=new)
+                    Paymentdetail.objects.filter(
+                        username=name).update(password=new)
                     n = 'your password is updated successfully now you can login !'
                     cname = 'alert-success'
                     bool = True

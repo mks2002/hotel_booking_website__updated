@@ -142,7 +142,7 @@ def details(request):
 
 # this page is for deleting the order...
 
-
+# for deleting the order ...
 def delete(request):
     id = request.GET.get('session__id')
     if 'user_{}_uname'.format(id) in request.session and 'user_{}_upass'.format(id) in request.session:
