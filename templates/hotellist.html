@@ -340,11 +340,9 @@
 
 
 <li class="nav-item">
-<a
-  class="nav-link "
-  href="{% url 'logout' id %}"
-  >Logout</a
->
+
+ 
+  <a class="{% if request.path == '/hotellist/all/'|add:id  or request.path == '/hotellist/goa/'|add:id or request.path == '/hotellist/kerala/'|add:id or request.path == '/hotellist/jammu kashmir/'|add:id or request.path == '/hotellist/Rajasthan/'|add:id or request.path == '/hotellist/Himachal pradesh/'|add:id or request.path == '/hotellist/others/'|add:id  %}active{% endif %} nav-link " href="{% url 'hotellist' 'all' id %}">Hotels & resorts</a>
 </li>
 
 <li class="nav-item mt-3 mt-lg-0">
@@ -459,9 +457,9 @@
           </div>
         </div>
       </div>
-      {% comment %} this empty tag is not work if for frontend search no hotel is available...
+       {% comment %} this empty tag is not work if for frontend search no hotel is available... {% endcomment %}
       {% empty %}
-        <h3 class="text-center">Sorry no such hotel is available...</h3> {% endcomment %}
+        <h3 class="text-center mx-3">Sorry for that particular state we currently dont have any services...</h3> 
       {% endfor %}
 
 
